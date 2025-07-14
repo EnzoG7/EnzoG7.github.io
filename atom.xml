@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-07-09T09:02:20.373Z</updated>
+  <updated>2025-07-14T00:51:33.145Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,15 +17,52 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Intellij Idea的Bug</title>
+    <link href="http://example.com/2025/07/14/IntellijIdea%E7%9A%84Bug/"/>
+    <id>http://example.com/2025/07/14/IntellijIdea%E7%9A%84Bug/</id>
+    <published>2025-07-14T00:44:13.000Z</published>
+    <updated>2025-07-14T00:51:33.145Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文记录Intellij Idea的一些Bug和部分解决措施.</p><span id="more"></span><h1 id="Directory-‘…-ProjectNamePath-…’-does-not-contain-a-Gradle-build"><a href="#Directory-‘…-ProjectNamePath-…’-does-not-contain-a-Gradle-build" class="headerlink" title="Directory ‘…&#x2F;ProjectNamePath&#x2F;…’ does not contain a Gradle build."></a>Directory ‘…&#x2F;ProjectNamePath&#x2F;…’ does not contain a Gradle build.</h1><h2 id="问题出现的部分原因"><a href="#问题出现的部分原因" class="headerlink" title="问题出现的部分原因"></a>问题出现的部分原因</h2><p>1.在创建product模块时,作为gradle项目创建,后来改成maven项目,但IDEA认为该模块是Gradle项目,在尝试编译时寻找Gradle配置文件.<br>2.之前创建的项目直接文件夹删除了,并没有清除记录</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>找到对应项目目录下的gradle.xml文件,一般在’…&#x2F;ProjectNamePath&#x2F;.idea&#x2F;gradle.xml’.将其中涉及项目的&lt;option name &#x3D; “…” …&gt;都注释掉.</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;本文记录Intellij Idea的一些Bug和部分解决措施.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Bug" scheme="http://example.com/categories/Bug/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+    <category term="Bug" scheme="http://example.com/tags/Bug/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaWeb的Bug之MyBatis</title>
     <link href="http://example.com/2025/07/09/JavaWeb%E7%9A%84Bug%E4%B9%8BMyBatis/"/>
     <id>http://example.com/2025/07/09/JavaWeb%E7%9A%84Bug%E4%B9%8BMyBatis/</id>
     <published>2025-07-09T09:02:20.000Z</published>
-    <updated>2025-07-09T09:02:20.373Z</updated>
+    <updated>2025-07-09T09:21:14.208Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文记录MyBatis的一些Bug和部分解决措施.</p><span id="more"></span>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;本文记录MyBatis的一些Bug和部分解决措施.&lt;/p&gt;</summary>
     
     
     
+    <category term="Bug" scheme="http://example.com/categories/Bug/"/>
     
+    
+    <category term="MyBatis" scheme="http://example.com/tags/MyBatis/"/>
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    
+    <category term="Bug" scheme="http://example.com/tags/Bug/"/>
     
   </entry>
   
