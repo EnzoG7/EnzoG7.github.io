@@ -20,30 +20,42 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="cogito ergo sum">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Enzo&#39;s Blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="1. 配置优先级SpringBoot项目当中支持三类配置文件:  application.properties application.yml application.yaml优先级也是自高到底的顺序.(其中yml是主流配置文件,不推荐同时使用多种格式的配置文件)除了配置文件以外,SpringBoot还支持Java属性配置(-Dkey&#x3D;value)和命令行参数(–key&#x3D;val">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot原理">
+<meta property="og:url" content="http://example.com/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="Enzo&#39;s Blog">
-<meta property="og:description" content="cogito ergo sum">
+<meta property="og:description" content="1. 配置优先级SpringBoot项目当中支持三类配置文件:  application.properties application.yml application.yaml优先级也是自高到底的顺序.(其中yml是主流配置文件,不推荐同时使用多种格式的配置文件)除了配置文件以外,SpringBoot还支持Java属性配置(-Dkey&#x3D;value)和命令行参数(–key&#x3D;val">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E8%B5%B7%E6%AD%A5%E4%BE%9D%E8%B5%96.png">
+<meta property="og:image" content="http://example.com/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA1.png">
+<meta property="og:image" content="http://example.com/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA2.png">
+<meta property="og:image" content="http://example.com/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA3.png">
+<meta property="og:image" content="http://example.com/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA4.png">
+<meta property="og:image" content="http://example.com/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA5.png">
+<meta property="article:published_time" content="2025-07-20T12:31:34.000Z">
+<meta property="article:modified_time" content="2025-07-20T13:27:23.410Z">
 <meta property="article:author" content="Enzo">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E8%B5%B7%E6%AD%A5%E4%BE%9D%E8%B5%96.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Enzo's Blog</title>
+  <title>SpringBoot原理 | Enzo's Blog</title>
   
 
 
@@ -157,9 +169,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -175,10 +188,9 @@
       <meta itemprop="name" content="Enzo's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">SpringBoot原理</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          SpringBoot原理
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -211,7 +223,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="配置优先级">1. 配置优先级</h1><p>SpringBoot项目当中支持三类配置文件:</p>
+        <h1 id="配置优先级">1. 配置优先级</h1><p>SpringBoot项目当中支持三类配置文件:</p>
 <ul>
 <li>application.properties</li>
 <li>application.yml</li>
@@ -289,604 +301,67 @@
 <h3 id="原理分析">3.2.2. 原理分析</h3><h4 id="源码跟踪">3.2.2.1. 源码跟踪</h4><p>根据SpringBoot的自动配置原理,要从SpringBoot启动类上使用的核心注解@SpringBootApplication开始分析<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA1.png" alt="自动配置原理"><br>@Configuration表明SpringBoot启动类就是一个配置类<br>@Indexed用来加速应用启动的(不用关心)<br>@ComponentScan注解是用来扫描启动类所在的包及其子包下所有被@Component及其衍生注解声明的类<br>@Import注解导入了实现ImportSelector接口的实现类AutoConfigurationImportSelector类(ImportSelector接口的实现类),AutoConfigurationImportSelector类中重写了ImportSelector接口的selectImports()方法<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA2.png" alt="自动配置原理2"><br>selectImports()方法底层调用getAutoConfigurationEntry()方法，获取可自动配置的配置类信息集合<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA3.png" alt="自动配置原理3"><br>getAutoConfigurationEntry()方法通过调用getCandidateConfigurations(annotationMetadata, attributes)方法获取在配置文件中配置的所有自动配置类的集合<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA4.png" alt="自动配置原理4"><br>getCandidateConfigurations方法的功能：<br>获取所有基于 META-INF&#x2F;spring&#x2F;org.springframework.boot.autoconfigure.AutoConfiguration.imports文件中配置类的集合(配置类中定义了@Bean注解标识的方法)<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA5.png" alt="自动配置原理5"></p>
 <p>自动配置的原理就是在配置类中定义一个@Bean标识的方法,而Spring会自动调用配置类中使用@Bean标识的方法,并把方法的返回值注册到IOC容器中.<br>当SpringBoot程序启动时,就会加载配置文件当中所定义的配置类,并将这些配置类信息(类的全限定名)封装到String类型的数组中,最终通过@Import注解将这些配置类全部加载到Spring的IOC容器中,交给IOC容器管理.</p>
 <h4 id="Conditional">3.2.2.2. @Conditional</h4>
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
- <div>
-       
-  </div>
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/20/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8BAOP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="Enzo">
-      <meta itemprop="description" content="cogito ergo sum">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enzo's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/20/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8BAOP/" class="post-title-link" itemprop="url">面向切面编程AOP</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-07-20 20:10:57 / 修改时间：20:32:07" itemprop="dateCreated datePublished" datetime="2025-07-20T20:10:57+08:00">2025-07-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaWeb/" itemprop="url" rel="index"><span itemprop="name">JavaWeb</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>AOP：Aspect Oriented Programming(面向切面编程、面向方面编程)</p>
-<ul>
-<li>减少重复代码：不需要在业务方法中定义大量的重复性的代码，只需要将重复性的代码抽取到AOP程序中即可。</li>
-<li>代码无侵入：在基于AOP实现这些业务功能时，对原有的业务代码是没有任何侵入的，不需要修改任何的业务代码。</li>
-<li>提高开发效率</li>
-<li>维护方便</li>
-</ul>
-<h1 id="导入AOP依赖及入门代码实现">1. 导入AOP依赖及入门代码实现</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>切面类用来记录方法执行时间的例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Aspect</span> <span class="comment">//当前类为切面类</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RecordTimeAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Around(&quot;execution(* com.itheima.service.impl.DeptServiceImpl.*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">recordTime</span><span class="params">(ProceedingJoinPoint pjp)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="comment">//记录方法执行开始时间</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">begin</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//执行原始方法</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> pjp.proceed();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//记录方法执行结束时间</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//计算方法执行耗时</span></span><br><span class="line">        log.info(<span class="string">&quot;方法执行耗时: &#123;&#125;毫秒&quot;</span>,end-begin);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
- <div>
-       
-  </div>
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E7%BB%9F%E4%B8%80%E6%8B%A6%E6%88%AA%E6%8A%80%E6%9C%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="Enzo">
-      <meta itemprop="description" content="cogito ergo sum">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enzo's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E7%BB%9F%E4%B8%80%E6%8B%A6%E6%88%AA%E6%8A%80%E6%9C%AF/" class="post-title-link" itemprop="url">Web登录校验之统一拦截技术</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-07-17 21:17:55" itemprop="dateCreated datePublished" datetime="2025-07-17T21:17:55+08:00">2025-07-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-07-20 20:03:43" itemprop="dateModified" datetime="2025-07-20T20:03:43+08:00">2025-07-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaWeb/" itemprop="url" rel="index"><span itemprop="name">JavaWeb</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>统一拦截技术有两种,Filter过滤器和Interceptor拦截器,用于统一拦截到所有的请求校验令牌的有效性.两种只需要实现一种即可.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E7%BB%9F%E4%B8%80%E6%8B%A6%E6%88%AA%E6%8A%80%E6%9C%AF/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
- <div>
-       
-  </div>
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/">
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="Enzo">
-      <meta itemprop="description" content="cogito ergo sum">
-    </span>
+    <div class="social-list">
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enzo's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/" class="post-title-link" itemprop="url">Web登录校验之会话技术</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-07-17 19:59:48 / 修改时间：21:17:29" itemprop="dateCreated datePublished" datetime="2025-07-17T19:59:48+08:00">2025-07-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaWeb/" itemprop="url" rel="index"><span itemprop="name">JavaWeb</span></a>
-                </span>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
             </span>
 
-          
-
+            <span class="label">RSS</span>
+          </a>
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>登录校验,指的是我们在服务器端接收到浏览器发送过来的请求之后,首先我们要对请求进行校验.先要校验一下用户登录了没有,如果用户已经登录了,就直接执行对应的业务操作就可以了;如果用户没有登录,此时就不允许他执行相关的业务操作,直接给前端响应一个错误的结果,最终跳转到登录页面,要求他登录成功之后,再来访问对应的数据.<br>主要涉及两个技术,会话技术与统一拦截技术.<br>本文介绍会话技术.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
     </div>
+  </div>
 
-    
-    
-    
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Web/" rel="tag"># Web</a>
+              <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/07/20/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8BAOP/" rel="prev" title="面向切面编程AOP">
+      <i class="fa fa-chevron-left"></i> 面向切面编程AOP
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
  <div>
        
-  </div>
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/14/IntellijIdea%E7%9A%84Bug/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="Enzo">
-      <meta itemprop="description" content="cogito ergo sum">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enzo's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/14/IntellijIdea%E7%9A%84Bug/" class="post-title-link" itemprop="url">Intellij Idea的Bug</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-07-14 08:44:13" itemprop="dateCreated datePublished" datetime="2025-07-14T08:44:13+08:00">2025-07-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-07-17 19:58:53" itemprop="dateModified" datetime="2025-07-17T19:58:53+08:00">2025-07-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
+         <div>
     
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------我到底啦 <i class="fa fa-paw"></i> 感谢大佬-------------</div>
     
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文记录Intellij Idea的一些Bug和部分解决措施.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/14/IntellijIdea%E7%9A%84Bug/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
- <div>
+</div>
        
   </div>
   
   
   
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/09/JavaWeb%E7%9A%84Bug%E4%B9%8BMyBatis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="Enzo">
-      <meta itemprop="description" content="cogito ergo sum">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enzo's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/09/JavaWeb%E7%9A%84Bug%E4%B9%8BMyBatis/" class="post-title-link" itemprop="url">JavaWeb的Bug之MyBatis</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-07-09 17:02:20" itemprop="dateCreated datePublished" datetime="2025-07-09T17:02:20+08:00">2025-07-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-07-14 15:54:25" itemprop="dateModified" datetime="2025-07-14T15:54:25+08:00">2025-07-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文记录MyBatis的一些Bug和部分解决措施.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/09/JavaWeb%E7%9A%84Bug%E4%B9%8BMyBatis/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
- <div>
-       
-  </div>
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/09/MyBatis%E7%9A%84%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="Enzo">
-      <meta itemprop="description" content="cogito ergo sum">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enzo's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/09/MyBatis%E7%9A%84%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">MyBatis的入门</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-07-09 11:23:20 / 修改时间：17:10:12" itemprop="dateCreated datePublished" datetime="2025-07-09T11:23:20+08:00">2025-07-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaWeb/" itemprop="url" rel="index"><span itemprop="name">JavaWeb</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>MyBatis是一款优秀的持久层框架,用于简化JDBC的开发.<br>本文及后续JavaWeb所创建的项目均为Maven+SpringBoot项目,用的是Aliyun的Maven仓库.<br>主要记录MyBatis依赖的安装过程和入门操作.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/09/MyBatis%E7%9A%84%E5%85%A5%E9%97%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
- <div>
-       
-  </div>
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/08/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="Enzo">
-      <meta itemprop="description" content="cogito ergo sum">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enzo's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/08/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-07-08 19:54:02" itemprop="dateCreated datePublished" datetime="2025-07-08T19:54:02+08:00">2025-07-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-07-14 16:12:11" itemprop="dateModified" datetime="2025-07-14T16:12:11+08:00">2025-07-14</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>欢迎来到我的博客,我还在学习java中,目前主要发布java学习中的部分笔记和排错记录.<br>同时也会分享一些Python,C++等语言编写的好玩的项目.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/08/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
- <div>
-       
-  </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -937,6 +412,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-text">1. 配置优先级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean%E7%AE%A1%E7%90%86"><span class="nav-text">2. Bean管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-text">2.1. Bean的作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9Bean"><span class="nav-text">2.2. 第三方Bean</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot%E5%8E%9F%E7%90%86"><span class="nav-text">3. SpringBoot原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E6%AD%A5%E4%BE%9D%E8%B5%96"><span class="nav-text">3.1. 起步依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE"><span class="nav-text">3.2. 自动配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88"><span class="nav-text">3.2.1. 实现方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%881-ComponentScan-%E7%BB%84%E4%BB%B6%E6%89%AB%E6%8F%8F"><span class="nav-text">3.2.1.1. 方案1 @ComponentScan 组件扫描</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%882-Import%E5%AF%BC%E5%85%A5"><span class="nav-text">3.2.1.2. 方案2 @Import导入</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Import%E5%AF%BC%E5%85%A5%E6%99%AE%E9%80%9A%E7%B1%BB"><span class="nav-text">3.2.1.2.1. @Import导入普通类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Import%E5%AF%BC%E5%85%A5%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="nav-text">3.2.1.2.2. @Import导入配置类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Import%E5%AF%BC%E5%85%A5ImportSelector%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="nav-text">3.2.1.2.3. @Import导入ImportSelector接口实现类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E4%BE%9D%E8%B5%96%E8%87%AA%E5%B7%B1%E6%8C%87%E5%AE%9Abean%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%85%8D%E7%BD%AE%E7%B1%BB%E6%8F%90%E4%BE%9B%E7%9A%84-EnableXxxxx%E6%B3%A8%E8%A7%A3"><span class="nav-text">3.2.1.2.4. 第三方依赖自己指定bean对象和配置类提供的@EnableXxxxx注解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90"><span class="nav-text">3.2.2. 原理分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA"><span class="nav-text">3.2.2.1. 源码跟踪</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conditional"><span class="nav-text">3.2.2.2. @Conditional</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
