@@ -186,10 +186,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-07-20 20:31:34 / 修改时间：21:27:23" itemprop="dateCreated datePublished" datetime="2025-07-20T20:31:34+08:00">2025-07-20</time>
+              <time title="创建时间：2025-07-20 20:31:34" itemprop="dateCreated datePublished" datetime="2025-07-20T20:31:34+08:00">2025-07-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-07-21 08:24:00" itemprop="dateModified" datetime="2025-07-21T08:24:00+08:00">2025-07-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -211,84 +217,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="配置优先级">1. 配置优先级</h1><p>SpringBoot项目当中支持三类配置文件:</p>
+          <p>springboot原理篇，主要偏向于底层原理</p>
 <ul>
-<li>application.properties</li>
-<li>application.yml</li>
-<li>application.yaml<br>优先级也是自高到底的顺序.(其中yml是主流配置文件,不推荐同时使用多种格式的配置文件)<br>除了配置文件以外,SpringBoot还支持Java属性配置(-Dkey&#x3D;value)和命令行参数(–key&#x3D;value)</li>
+<li>配置优先级</li>
+<li>Bean管理</li>
+<li>Springboot的底层原理</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">-Dserver.port=9000</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">--server.port=10010</span></span><br></pre></td></tr></table></figure>
-<p>五种配置方式的优先级:命令行参数 &gt;  系统属性参数 &gt; properties参数 &gt; yml参数 &gt; yaml参数</p>
-<h1 id="Bean管理">2. Bean管理</h1><p>可以通过Spring当中提供的注解@Component以及它的三个衍生注解(@Controller、@Service、@Repository)来声明IOC容器中的bean对象.<br>及通过@Autowired注解来实现依赖注入DI.<br>以下设计两方面:</p>
-<ul>
-<li>bean的作用域配置</li>
-<li>管理第三方的bean对象</li>
-</ul>
-<h2 id="Bean的作用域">2.1. Bean的作用域</h2><p>IOC容器当中,默认bean对象是单例的(只有一个实例对象)</p>
-<table>
-<thead>
-<tr>
-<th>作用域</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>singleton</td>
-<td>容器内同名称的bean只有一个实例(单例)(默认)</td>
-</tr>
-<tr>
-<td>prototype</td>
-<td>每次使用该bean时会创建新的实例(非单例)</td>
-</tr>
-<tr>
-<td>request</td>
-<td>每个请求范围内会创建新的实例(web环境中)</td>
-</tr>
-<tr>
-<td>session</td>
-<td>每个会话范围内会创建新的实例(web环境中)</td>
-</tr>
-<tr>
-<td>application</td>
-<td>每个应用范围内会创建新的实例(web环境中)</td>
-</tr>
-<tr>
-<td>通过@Scope注解配置作用域,可以使用@Lazy注解来延迟初始化到第一次使用时.</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="第三方Bean">2.2. 第三方Bean</h2><p>引入第三方依赖提供的类无法使用@Component及其衍生注解来声明Bean,此时需使用@Bean注解来声明bean.<br>例子 在启动类中直接声明这个Bean</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.itheima.utils.AliyunOSSOperator;</span><br><span class="line"><span class="keyword">import</span> com.itheima.utils.AliyunOSSProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.ServletComponentScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.EnableScheduling;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ServletComponentScan</span></span><br><span class="line"><span class="meta">@EnableScheduling</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TliasWebManagementApplication</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(TliasWebManagementApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> AliyunOSSOperator <span class="title function_">aliyunOSSOperator</span><span class="params">(AliyunOSSProperties ossProperties)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">AliyunOSSOperator</span>(ossProperties);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>例子 通过 @Configuration 注解声明一个配置类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.itheima.utils.AliyunOSSOperator;</span><br><span class="line"><span class="keyword">import</span> com.itheima.utils.AliyunOSSProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OSSConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> AliyunOSSOperator <span class="title function_">aliyunOSSOperator</span><span class="params">(AliyunOSSProperties ossProperties)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">AliyunOSSOperator</span>(ossProperties);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="SpringBoot原理">3. SpringBoot原理</h1><p>学习SpringBoot的原理就是来解析SpringBoot当中的起步依赖与自动配置的原理</p>
-<h2 id="起步依赖">3.1. 起步依赖</h2><p>引入了 spring-boot-starter-web 之后,maven会通过依赖传递特性,将web开发所需的常见依赖都传递下来.(springboot-starter-web集成了web开发中常见的依赖:json、web、webmvc、tomcat等)<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E8%B5%B7%E6%AD%A5%E4%BE%9D%E8%B5%96.png" alt="起步依赖"><br>所以,起步依赖的原理就是Maven的依赖传递.</p>
-<h2 id="自动配置">3.2. 自动配置</h2><p>SpringBoot的自动配置就是当spring容器启动后,一些配置类、bean对象就自动存入到了IOC容器中,不需要我们手动去声明,从而简化了开发,省去了繁琐的配置操作</p>
-<h3 id="实现方案">3.2.1. 实现方案</h3><p>导入com.example依赖却无法@Autowired注入,是因为SpringBoot项目中的@SpringBootApplication注解,虽然具有包扫描的作用,但是它只会扫描启动类所在的当前包以及子包,而当前包是com.it</p>
-<h4 id="方案1-ComponentScan-组件扫描">3.2.1.1. 方案1 @ComponentScan 组件扫描</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@ComponentScan(&#123;&quot;com.itheima&quot;,&quot;com.example&quot;&#125;)</span> <span class="comment">//指定要扫描的包</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringbootWebConfigApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringbootWebConfigApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当需要引入大量的第三方的依赖,就需要在启动类上配置N多要扫描的包,这种方式会很繁琐,而且这种大面积的扫描性能也比较低.</p>
-<h4 id="方案2-Import导入">3.2.1.2. 方案2 @Import导入</h4><h5 id="Import导入普通类">3.2.1.2.1. @Import导入普通类</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Import(TokenParser.class)</span> <span class="comment">//导入的类会被Spring加载到IOC容器中</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringbootWebConfigApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringbootWebConfigApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="Import导入配置类">3.2.1.2.2. @Import导入配置类</h5><p>配置类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HeaderConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> HeaderParser <span class="title function_">headerParser</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">HeaderParser</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> HeaderGenerator <span class="title function_">headerGenerator</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">HeaderGenerator</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>启动类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Import(HeaderConfig.class)</span> <span class="comment">//导入配置类</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringbootWebConfig2Application</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringbootWebConfig2Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="Import导入ImportSelector接口实现类">3.2.1.2.3. @Import导入ImportSelector接口实现类</h5><p>实现类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyImportSelector</span> <span class="keyword">implements</span> <span class="title class_">ImportSelector</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String[] selectImports(AnnotationMetadata importingClassMetadata) &#123;</span><br><span class="line">        <span class="comment">//返回值字符串数组（数组中封装了全限定名称的类）</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;com.example.HeaderConfig&quot;</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>启动类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Import(MyImportSelector.class)</span> <span class="comment">//导入ImportSelector接口实现类</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringbootWebConfig2Application</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringbootWebConfig2Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="第三方依赖自己指定bean对象和配置类提供的-EnableXxxxx注解">3.2.1.2.4. 第三方依赖自己指定bean对象和配置类提供的@EnableXxxxx注解</h5><p>比较常见的方案就是第三方依赖给我们提供一个注解,这个注解一般都以@EnableXxxx开头的注解,注解中封装的就是@Import注解.<br>第三方依赖提供的注解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(ElementType.TYPE)</span></span><br><span class="line"><span class="meta">@Import(MyImportSelector.class)</span><span class="comment">//指定要导入哪些bean对象或配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnableHeaderConfig &#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>启动类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableHeaderConfig</span>  <span class="comment">//使用第三方依赖提供的Enable开头的注解</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringbootWebConfig2Application</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringbootWebConfig2Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="原理分析">3.2.2. 原理分析</h3><h4 id="源码跟踪">3.2.2.1. 源码跟踪</h4><p>根据SpringBoot的自动配置原理,要从SpringBoot启动类上使用的核心注解@SpringBootApplication开始分析<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA1.png" alt="自动配置原理"><br>@Configuration表明SpringBoot启动类就是一个配置类<br>@Indexed用来加速应用启动的(不用关心)<br>@ComponentScan注解是用来扫描启动类所在的包及其子包下所有被@Component及其衍生注解声明的类<br>@Import注解导入了实现ImportSelector接口的实现类AutoConfigurationImportSelector类(ImportSelector接口的实现类),AutoConfigurationImportSelector类中重写了ImportSelector接口的selectImports()方法<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA2.png" alt="自动配置原理2"><br>selectImports()方法底层调用getAutoConfigurationEntry()方法，获取可自动配置的配置类信息集合<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA3.png" alt="自动配置原理3"><br>getAutoConfigurationEntry()方法通过调用getCandidateConfigurations(annotationMetadata, attributes)方法获取在配置文件中配置的所有自动配置类的集合<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA4.png" alt="自动配置原理4"><br>getCandidateConfigurations方法的功能：<br>获取所有基于 META-INF&#x2F;spring&#x2F;org.springframework.boot.autoconfigure.AutoConfiguration.imports文件中配置类的集合(配置类中定义了@Bean注解标识的方法)<br><img src="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA5.png" alt="自动配置原理5"></p>
-<p>自动配置的原理就是在配置类中定义一个@Bean标识的方法,而Spring会自动调用配置类中使用@Bean标识的方法,并把方法的返回值注册到IOC容器中.<br>当SpringBoot程序启动时,就会加载配置文件当中所定义的配置类,并将这些配置类信息(类的全限定名)封装到String类型的数组中,最终通过@Import注解将这些配置类全部加载到Spring的IOC容器中,交给IOC容器管理.</p>
-<h4 id="Conditional">3.2.2.2. @Conditional</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/07/20/SpringBoot%E5%8E%9F%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -335,10 +277,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-07-20 20:10:57 / 修改时间：20:32:07" itemprop="dateCreated datePublished" datetime="2025-07-20T20:10:57+08:00">2025-07-20</time>
+              <time title="创建时间：2025-07-20 20:10:57" itemprop="dateCreated datePublished" datetime="2025-07-20T20:10:57+08:00">2025-07-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-07-21 08:14:00" itemprop="dateModified" datetime="2025-07-21T08:14:00+08:00">2025-07-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -367,9 +315,14 @@
 <li>提高开发效率</li>
 <li>维护方便</li>
 </ul>
-<h1 id="导入AOP依赖及入门代码实现">1. 导入AOP依赖及入门代码实现</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>切面类用来记录方法执行时间的例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Aspect</span> <span class="comment">//当前类为切面类</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RecordTimeAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Around(&quot;execution(* com.itheima.service.impl.DeptServiceImpl.*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">recordTime</span><span class="params">(ProceedingJoinPoint pjp)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="comment">//记录方法执行开始时间</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">begin</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//执行原始方法</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> pjp.proceed();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//记录方法执行结束时间</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//计算方法执行耗时</span></span><br><span class="line">        log.info(<span class="string">&quot;方法执行耗时: &#123;&#125;毫秒&quot;</span>,end-begin);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/07/20/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8BAOP/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
