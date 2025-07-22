@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-07-21T00:24:00.056Z</updated>
+  <updated>2025-07-22T00:24:22.804Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>dependencyManagement和dependencies的区别</title>
+    <link href="http://example.com/2025/07/22/dependencyManagement%E5%92%8Cdependencies%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://example.com/2025/07/22/dependencyManagement%E5%92%8Cdependencies%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
+    <published>2025-07-22T00:22:06.000Z</published>
+    <updated>2025-07-22T00:24:22.804Z</updated>
+    
+    <content type="html"><![CDATA[<p>dependencyManagement和dependencies都是依赖相关的标签,但是不能互相替代</p><span id="more"></span><h1 id="dependencies">1. dependencies</h1><p>dependencies是用来声明项目的依赖,在项目中使用到的依赖都需要在dependencies中声明</p><h1 id="dependencyManagement">2. dependencyManagement</h1><p>dependencyManagement是用来管理项目的依赖版本,在项目中使用到的依赖都需要在dependencyManagement中声明,一般写在父项目.</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;dependencyManagement和dependencies都是依赖相关的标签,但是不能互相替代&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="JavaWeb" scheme="http://example.com/categories/JavaWeb/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    
+    <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot原理</title>
