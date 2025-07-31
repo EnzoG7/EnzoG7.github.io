@@ -207,13 +207,13 @@
     <category term="Bug" scheme="http://example.com/categories/Bug/"/>
     
     
-    <category term="MyBatis" scheme="http://example.com/tags/MyBatis/"/>
-    
     <category term="Java" scheme="http://example.com/tags/Java/"/>
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
-    
     <category term="Bug" scheme="http://example.com/tags/Bug/"/>
+    
+    <category term="MyBatis" scheme="http://example.com/tags/MyBatis/"/>
+    
+    <category term="Web" scheme="http://example.com/tags/Web/"/>
     
   </entry>
   
@@ -234,9 +234,9 @@
     <category term="JavaWeb" scheme="http://example.com/categories/JavaWeb/"/>
     
     
-    <category term="MyBatis" scheme="http://example.com/tags/MyBatis/"/>
-    
     <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+    <category term="MyBatis" scheme="http://example.com/tags/MyBatis/"/>
     
     <category term="Web" scheme="http://example.com/tags/Web/"/>
     
