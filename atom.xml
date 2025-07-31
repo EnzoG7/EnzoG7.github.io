@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-07-22T01:04:14.421Z</updated>
+  <updated>2025-07-31T16:55:12.657Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux终端常用命令</title>
+    <link href="http://example.com/2025/08/01/Linux%E7%BB%88%E7%AB%AF%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2025/08/01/Linux%E7%BB%88%E7%AB%AF%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2025-07-31T16:34:52.000Z</published>
+    <updated>2025-07-31T16:55:12.657Z</updated>
+    
+    <content type="html"><![CDATA[<p>Linux终端是与操作系统交互的重要工具，掌握常用命令可以提高工作效率。以下是一些常用的Linux终端命令。</p><span id="more"></span><h1 id="基本格式">1. 基本格式</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> [-options] [parameter]</span><br></pre></td></tr></table></figure><p>command ：命令名,相应功能的英文单词或单词的缩写<br>[-options] ：选项,特殊参数标识<br>parameter ：传给命令的参数,可以是 零个、一个 或者 多个</p><h1 id="快捷操作">2. 快捷操作</h1><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>Ctrl + C</td><td>终止当前命令</td></tr><tr><td>Ctrl + Z</td><td>暂停当前命令</td></tr><tr><td>Ctrl + D</td><td>退出终端</td></tr><tr><td>Ctrl + L</td><td>清屏</td></tr><tr><td>Ctrl + U</td><td>清空当前行</td></tr><tr><td>Ctrl + R</td><td>搜索历史命令</td></tr><tr><td>Ctrl + A</td><td>光标移动到行首</td></tr><tr><td>Ctrl + E</td><td>光标移动到行尾</td></tr></tbody></table><p><strong>自动补全</strong><br>输入文件或命令前几个字母后,按Tab键可以自动补全</p><h1 id="常用命令">3. 常用命令</h1><table><thead><tr><th>命令</th><th>说明</th><th>特殊参数</th></tr></thead><tbody><tr><td><strong>ls</strong></td><td>列出目录下的文件和子目录</td><td>-l 详细信息, -a 显示所有包括隐藏文件</td></tr><tr><td><strong>cd</strong></td><td>切换目录</td><td>find [目录路径] -name “文件名”</td></tr><tr><td><strong>pwd</strong></td><td>显示当前目录的路径</td><td></td></tr><tr><td><strong>clear</strong></td><td>清屏</td><td></td></tr><tr><td><strong>mkdir</strong></td><td>创建目录</td><td>-p 创建所有不存在的路径的目录</td></tr><tr><td><strong>touch</strong></td><td>创建文件</td><td>文件名</td></tr><tr><td><strong>rm</strong></td><td>删除文件</td><td>-f 强制删除, -r 递归删除目录</td></tr><tr><td><strong>cp</strong></td><td>复制文件</td><td>源文件 目标文件, -i 覆盖提示, -r 递归复制目录</td></tr><tr><td><strong>mv</strong></td><td>移动文件</td><td>源文件 目标文件, -i 覆盖提示</td></tr><tr><td><strong>cat</strong></td><td>显示文件内容</td><td>文件名, -b 显示行号</td></tr><tr><td><strong>more</strong></td><td>分页显示文件内容</td><td>文件名</td></tr><tr><td><strong>grep</strong></td><td>搜索文件内容</td><td>搜索内容 文件名</td></tr><tr><td><strong>find</strong></td><td>查找文件</td><td>查找路径 -name 文件名</td></tr><tr><td><strong>tar</strong></td><td>压缩文件</td><td>-zcvf 压缩文件名 源文件</td></tr><tr><td><strong>tar</strong></td><td>解压文件</td><td>-zxvf 压缩文件名</td></tr></tbody></table><h1 id="vi-vim-编辑器">4. vi&#x2F;vim 编辑器</h1><p>vi&#x2F;vim 是一个强大的文本编辑器，常用于编辑配置文件等。</p><table><thead><tr><th>模式</th><th>操作</th><th>说明</th></tr></thead><tbody><tr><td>普通模式</td><td>输入 vi 文件名</td><td>查看文件内容</td></tr><tr><td>插入模式</td><td>普通模式下输入 i,a,o</td><td>从当前光标位置插入&#x2F;光标下一个字符&#x2F;行尾开始编辑文本</td></tr><tr><td>命令模式</td><td>普通模式下输入 :</td><td>输入命令,例如wq(保存并退出),q!(不保存并退出)</td></tr></tbody></table><h1 id="Docker命令">5. Docker命令</h1><h2 id="常用命令-1">5.1. 常用命令</h2><table><thead><tr><th>命令</th><th>说明</th><th>特殊参数</th></tr></thead><tbody><tr><td><strong>docker ps</strong></td><td>列出运行中的容器</td><td></td></tr><tr><td><strong>docker ps -a</strong></td><td>列出所有容器</td><td></td></tr><tr><td><strong>docker images</strong></td><td>列出所有镜像</td><td></td></tr><tr><td><strong>docker run</strong></td><td>运行容器</td><td>-d 后台运行, -p 端口映射, –name 容器名称</td></tr><tr><td><strong>docker exec</strong></td><td>在容器内执行命令</td><td>-it 交互式</td></tr><tr><td><strong>docker stop</strong></td><td>停止容器</td><td>容器ID或名称</td></tr><tr><td><strong>docker rm</strong></td><td>删除容器</td><td>容器ID或名称</td></tr><tr><td><strong>docker rmi</strong></td><td>删除镜像</td><td>镜像ID或名称, -f 强制删除</td></tr><tr><td><strong>docker build</strong></td><td>构建镜像</td><td>-t 镜像名称:标签 Dockerfile路径</td></tr><tr><td><strong>docker pull</strong></td><td>从仓库拉取镜像</td><td>镜像名称:标签</td></tr><tr><td><strong>docker push</strong></td><td>推送镜像到仓库</td><td>镜像名称:标签</td></tr><tr><td><strong>docker logs</strong></td><td>查看容器日志</td><td>容器ID或名称</td></tr><tr><td><strong>docker network ls</strong></td><td>列出网络</td><td></td></tr></tbody></table><h2 id="数据卷相关命令">5.2. 数据卷相关命令</h2><table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td><strong>docker volume create</strong></td><td>创建数据卷</td></tr><tr><td><strong>docker volume inspect</strong></td><td>查看数据卷信息</td></tr><tr><td><strong>docker volume rm</strong></td><td>删除数据卷</td></tr><tr><td><strong>docker volume prune</strong></td><td>删除未使用的数据卷</td></tr><tr><td><strong>docker volume ls</strong></td><td>列出所有数据卷</td></tr></tbody></table>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;Linux终端是与操作系统交互的重要工具，掌握常用命令可以提高工作效率。以下是一些常用的Linux终端命令。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Linux" scheme="http://example.com/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+    <category term="命令行" scheme="http://example.com/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>dependencyManagement和dependencies的区别</title>
