@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-07-31T16:55:12.657Z</updated>
+  <updated>2025-08-16T12:27:53.577Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常见大模型服务平台及其介绍</title>
+    <link href="http://example.com/2025/08/16/%E5%B8%B8%E8%A7%81%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0%E5%8F%8A%E5%85%B6%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://example.com/2025/08/16/%E5%B8%B8%E8%A7%81%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0%E5%8F%8A%E5%85%B6%E4%BB%8B%E7%BB%8D/</id>
+    <published>2025-08-16T12:17:43.000Z</published>
+    <updated>2025-08-16T12:27:53.577Z</updated>
+    
+    <content type="html"><![CDATA[<p>常见的大模型服务平台有很多,以下是对一些主流平台的介绍,包括比较流行的百度千帆平台,OpenAI的ChatGPT,以及阿里云通义千问等.</p><span id="more"></span><h1 id="百度千帆平台">1. 百度千帆平台</h1><h2 id="介绍">1.1. 介绍</h2><p>支持百度自研的ERNIE（文心大模型） 系列（如文心一言）,同时兼容开源模型（如LLaMA、ChatGLM等）.<br>百度搜索内容时提示的ai功能就是文心一言提供的支持.</p><h2 id="功能">1.2. 功能</h2><ul><li><strong>模型选择</strong>: 提供多种模型选择,包括自研和开源模型.</li><li><strong>API接口</strong>: 提供RESTful API接口,方便集成到应用中</li><li><strong>多语言支持</strong>: 支持中文、英文等多种语言.</li><li><strong>自定义模型</strong>: 支持用户低参数微调自定义模型,满足特定需求,降低训练成本.</li></ul><h2 id="应用场景">1.3. 应用场景</h2><p>智能客服、内容生成、代码辅助、数据分析等</p><h1 id="阿里云通义千问">2. 阿里云通义千问</h1><h2 id="介绍-1">2.1. 介绍</h2><p>阿里云的大模型系列（如通义千问-7B&#x2F;14B），支持多模态（文本、图像）</p><h2 id="功能-1">2.2. 功能</h2><ul><li><strong>多模态支持</strong>: 支持文本、图像等多种输入形式</li><li><strong>API接口</strong>: 通过“灵积”平台提供RESTful API接口</li><li><strong>模型集成</strong>: 集成达摩院的预训练模型</li></ul><h2 id="应用场景-1">2.3. 应用场景</h2><p>电商、物流、娱乐等阿里生态场景</p><h1 id="腾讯混元大模型">3. 腾讯混元大模型</h1><h2 id="介绍-2">3.1. 介绍</h2><p>腾讯自研的千亿参数模型，支持文本、图像、视频生成</p><h2 id="应用场景-2">3.2. 应用场景</h2><p>与微信、腾讯云等产品深度结合，侧重社交和游戏场景</p><h1 id="华为盘古大模型">4. 华为盘古大模型</h1><h2 id="介绍-3">4.1. 介绍</h2><p>华为自研的大模型，支持文本、图像、视频生成,聚焦行业（矿山、气象、金融），强调“AI for Industries”</p><h2 id="应用场景-3">4.2. 应用场景</h2><p>结合昇腾芯片和MindSpore框架，优化端边云协同</p><h1 id="OpenAI-ChatGPT">5. OpenAI ChatGPT</h1><h2 id="介绍-4">5.1. 介绍</h2><p>OpenAI的ChatGPT是全球知名的大模型之一，提供强大的自然语言处理能力，支持文本生成、对话、问答等功能,但受限于国内的墙,国内并不流行</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;常见的大模型服务平台有很多,以下是对一些主流平台的介绍,包括比较流行的百度千帆平台,OpenAI的ChatGPT,以及阿里云通义千问等.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="AI应用" scheme="http://example.com/categories/AI%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="AI" scheme="http://example.com/tags/AI/"/>
+    
+    <category term="大模型" scheme="http://example.com/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux终端常用命令</title>
