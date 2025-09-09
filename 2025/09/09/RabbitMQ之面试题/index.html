@@ -20,21 +20,26 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="本文记录Intellij Idea的一些Bug和部分解决措施.">
+  <meta name="description" content="RabbitMQ是基于Erlang语言开发的开源消息通信中间件消息队列MQ的一种,支持AMQP协议(SpringBoot支持AMQP协议).">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Intellij Idea的Bug">
-<meta property="og:url" content="http://example.com/2025/07/14/IntellijIdea%E7%9A%84Bug/index.html">
+<meta property="og:title" content="RabbitMQ之面试题">
+<meta property="og:url" content="http://example.com/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="Enzo&#39;s Blog">
-<meta property="og:description" content="本文记录Intellij Idea的一些Bug和部分解决措施.">
+<meta property="og:description" content="RabbitMQ是基于Erlang语言开发的开源消息通信中间件消息队列MQ的一种,支持AMQP协议(SpringBoot支持AMQP协议).">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-07-14T00:44:13.000Z">
-<meta property="article:modified_time" content="2025-07-17T11:58:53.016Z">
+<meta property="og:image" content="http://example.com/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/RabbitMQ%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="http://example.com/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%B8%BB%E6%B5%81MQ%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%AF%B9%E6%AF%94.png">
+<meta property="article:published_time" content="2025-09-09T11:39:59.000Z">
+<meta property="article:modified_time" content="2025-09-09T11:58:44.405Z">
 <meta property="article:author" content="Enzo">
 <meta property="article:tag" content="Java">
-<meta property="article:tag" content="Bug">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="MQ">
+<meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/RabbitMQ%E6%9E%B6%E6%9E%84.png">
 
-<link rel="canonical" href="http://example.com/2025/07/14/IntellijIdea%E7%9A%84Bug/">
+<link rel="canonical" href="http://example.com/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/">
 
 
 <script id="page-configurations">
@@ -47,7 +52,7 @@
   };
 </script>
 
-  <title>Intellij Idea的Bug | Enzo's Blog</title>
+  <title>RabbitMQ之面试题 | Enzo's Blog</title>
   
 
 
@@ -168,7 +173,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/14/IntellijIdea%E7%9A%84Bug/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -181,7 +186,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Intellij Idea的Bug
+          RabbitMQ之面试题
         </h1>
 
         <div class="post-meta">
@@ -190,23 +195,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2025-07-14 08:44:13" itemprop="dateCreated datePublished" datetime="2025-07-14T08:44:13+08:00">2025-07-14</time>
+              <time title="创建时间：2025-09-09 19:39:59 / 修改时间：19:58:44" itemprop="dateCreated datePublished" datetime="2025-09-09T19:39:59+08:00">2025-09-09</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-07-17 19:58:53" itemprop="dateModified" datetime="2025-07-17T19:58:53+08:00">2025-07-17</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a>
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
                 </span>
             </span>
 
@@ -221,10 +220,87 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文记录Intellij Idea的一些Bug和部分解决措施.</p>
+        <p>RabbitMQ是基于Erlang语言开发的开源消息通信中间件消息队列MQ的一种,支持AMQP协议(SpringBoot支持AMQP协议).<br><img src="/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/RabbitMQ%E6%9E%B6%E6%9E%84.png" alt="RabbitMQ架构"></p>
 <span id="more"></span>
-<h1 id="Directory-‘…-ProjectNamePath-…’-does-not-contain-a-Gradle-build">1. Directory ‘…&#x2F;ProjectNamePath&#x2F;…’ does not contain a Gradle build.</h1><h2 id="问题出现的部分原因">1.1. 问题出现的部分原因</h2><p>1.在创建product模块时,作为gradle项目创建,后来改成maven项目,但IDEA认为该模块是Gradle项目,在尝试编译时寻找Gradle配置文件.<br>2.之前创建的项目直接将文件夹删除了,并没有清除记录</p>
-<h2 id="解决方法">1.2. 解决方法</h2><p>找到对应项目目录下的gradle.xml文件,一般在’…&#x2F;ProjectNamePath&#x2F;.idea&#x2F;gradle.xml’.将其中涉及项目的<option name="...">都注释掉.</option></p>
+
+<h1 id="安装及启用">1. 安装及启用</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull rabbitmq:3-management</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line"> -e RABBITMQ_DEFAULT_USER=xxxx \</span><br><span class="line"> -e RABBITMQ_DEFAULT_PASS=xxxx \</span><br><span class="line"> -v mq-plugins:/plugins \</span><br><span class="line"> --name mq \</span><br><span class="line"> --hostname mq \</span><br><span class="line"> --restart=always \</span><br><span class="line"> -p 15672:15672 \</span><br><span class="line"> -p 5672:5672 \</span><br><span class="line"> -d \</span><br><span class="line"> rabbitmq:3-management</span><br></pre></td></tr></table></figure>
+<p>5672：MQ的通信端口<br>15672：管控台的端口</p>
+<h1 id="同步调用与异步调用">2. 同步调用与异步调用</h1><h2 id="同步调用">2.1. 同步调用</h2><p>每一步调用者必须等待被调用方完全执行完毕并返回结果之后才能继续执行后续代码</p>
+<h3 id="优缺点">2.1.1. 优缺点</h3><ul>
+<li>优点:<ul>
+<li>简单直观,代码易于理解和编写</li>
+<li>易于调试,由于执行顺序明确,调试起来相对容易</li>
+<li>对实时性要求较高的场景较好</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>阻塞执行,如果一个操作需要很长时间来完成,那么整个程序会被阻塞,不能执行其他任务</li>
+<li>资源浪费,在等待长时间操作完成时,CPU和其他资源可能会处于空闲状态 </li>
+<li>级联失败问题,下游出错,上游也会出错</li>
+<li>耦合度高,服务间直接调用</li>
+<li>响应时长为几个服务处理时长的总和,性能和吞吐能力下降</li>
+</ul>
+</li>
+</ul>
+<h2 id="异步调用">2.2. 异步调用</h2><p>调用者发出调用后无需等待被调用方完成就可以继续执行其他任务</p>
+<h3 id="优缺点-1">2.2.1. 优缺点</h3><ul>
+<li>优点:<ul>
+<li>提高效率,异步调用可以使得程序在等待某些耗时操作完成的同时执行其他任务,提高了整体的执行效率</li>
+<li>资源利用率高,在等待耗时操作时,可以释放资源给其他任务使用,避免了资源浪费</li>
+<li>更好的用户体验,在网络应用中,用户不必等待页面加载完成就能进行其他操作,提高了用户体验</li>
+<li>需要处理耗时操作的场景较好</li>
+<li>耦合度低,只与Broker耦合</li>
+<li>高并发的请求由Broker承受,流量削峰,不会打到具体的服务</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>复杂性增加,异步编程通常比同步编程更复杂,因为它涉及更多的控制结构和错误处理逻辑</li>
+<li>调试困难,由于执行路径不是线性的,调试起来相对困难</li>
+</ul>
+</li>
+</ul>
+<h2 id="例子">2.3. 例子</h2><p>打电话预约服务</p>
+<ul>
+<li>同步调用:<ul>
+<li>预约餐桌</li>
+<li>您稍等,我确认下是否可以预约</li>
+<li>(五分钟后)您的预约已确认,请在指定时间到店</li>
+<li>挂断</li>
+</ul>
+</li>
+<li>异步调用:<ul>
+<li>预约餐桌</li>
+<li>好的,稍后我会短信通知您</li>
+<li>挂断</li>
+</ul>
+</li>
+</ul>
+<h1 id="主流MQ中间件">3. 主流MQ中间件</h1><ul>
+<li>RabbitMQ</li>
+<li>ActiveMQ</li>
+<li>Kafka</li>
+<li>RocketMQ</li>
+<li>等</li>
+</ul>
+<h2 id="对比">3.1. 对比</h2><p><img src="/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%B8%BB%E6%B5%81MQ%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%AF%B9%E6%AF%94.png" alt="主流MQ中间件对比"></p>
+<h2 id="选择">3.2. 选择</h2><ul>
+<li>选择MQ中间件时,需要根据业务场景和需求进行选择</li>
+<li>业务场景:<ul>
+<li>实时性要求高:RabbitMQ</li>
+<li>消息可靠性要求高:ActiveMQ</li>
+<li>消息量要求高:Kafka</li>
+<li>消息低延迟要求高:RocketMQ</li>
+</ul>
+</li>
+<li>需求:<ul>
+<li>功能完善:RabbitMQ、ActiveMQ、Kafka、RocketMQ</li>
+<li>性能好:RabbitMQ、Kafka、RocketMQ</li>
+<li>成本低:RabbitMQ、ActiveMQ、Kafka、RocketMQ</li>
+</ul>
+</li>
+<li>最终: 公司用什么，我们用什么</li>
+</ul>
 
     </div>
 
@@ -254,7 +330,9 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Java/" rel="tag"># Java</a>
-              <a href="/tags/Bug/" rel="tag"># Bug</a>
+              <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+              <a href="/tags/MQ/" rel="tag"># MQ</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
           </div>
 
         
@@ -263,13 +341,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2025/07/09/JavaWeb%E7%9A%84Bug%E4%B9%8BMyBatis/" rel="prev" title="JavaWeb的Bug之MyBatis">
-      <i class="fa fa-chevron-left"></i> JavaWeb的Bug之MyBatis
+    <a href="/2025/08/17/JavaWeb%E7%9A%84Bug%E4%B9%8BSpringBoot/" rel="prev" title="JavaWeb的Bug之SpringBoot">
+      <i class="fa fa-chevron-left"></i> JavaWeb的Bug之SpringBoot
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/" rel="next" title="Web登录校验之会话技术">
-      Web登录校验之会话技术 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -339,7 +414,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Directory-%E2%80%98%E2%80%A6-ProjectNamePath-%E2%80%A6%E2%80%99-does-not-contain-a-Gradle-build"><span class="nav-text">1. Directory ‘…&#x2F;ProjectNamePath&#x2F;…’ does not contain a Gradle build.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%87%BA%E7%8E%B0%E7%9A%84%E9%83%A8%E5%88%86%E5%8E%9F%E5%9B%A0"><span class="nav-text">1.1. 问题出现的部分原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">1.2. 解决方法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8A%E5%90%AF%E7%94%A8"><span class="nav-text">1. 安装及启用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E8%B0%83%E7%94%A8%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8"><span class="nav-text">2. 同步调用与异步调用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E8%B0%83%E7%94%A8"><span class="nav-text">2.1. 同步调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-text">2.1.1. 优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8"><span class="nav-text">2.2. 异步调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-1"><span class="nav-text">2.2.1. 优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-text">2.3. 例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81MQ%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-text">3. 主流MQ中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94"><span class="nav-text">3.1. 对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9"><span class="nav-text">3.2. 选择</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

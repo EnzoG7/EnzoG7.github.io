@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-08-17T02:50:48.546Z</updated>
+  <updated>2025-09-09T11:58:44.405Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RabbitMQ之面试题</title>
+    <link href="http://example.com/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>http://example.com/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
+    <published>2025-09-09T11:39:59.000Z</published>
+    <updated>2025-09-09T11:58:44.405Z</updated>
+    
+    <content type="html"><![CDATA[<p>RabbitMQ是基于Erlang语言开发的开源消息通信中间件消息队列MQ的一种,支持AMQP协议(SpringBoot支持AMQP协议).<br><img src="/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/RabbitMQ%E6%9E%B6%E6%9E%84.png" alt="RabbitMQ架构"></p><span id="more"></span><h1 id="安装及启用">1. 安装及启用</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull rabbitmq:3-management</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line"> -e RABBITMQ_DEFAULT_USER=xxxx \</span><br><span class="line"> -e RABBITMQ_DEFAULT_PASS=xxxx \</span><br><span class="line"> -v mq-plugins:/plugins \</span><br><span class="line"> --name mq \</span><br><span class="line"> --hostname mq \</span><br><span class="line"> --restart=always \</span><br><span class="line"> -p 15672:15672 \</span><br><span class="line"> -p 5672:5672 \</span><br><span class="line"> -d \</span><br><span class="line"> rabbitmq:3-management</span><br></pre></td></tr></table></figure><p>5672：MQ的通信端口<br>15672：管控台的端口</p><h1 id="同步调用与异步调用">2. 同步调用与异步调用</h1><h2 id="同步调用">2.1. 同步调用</h2><p>每一步调用者必须等待被调用方完全执行完毕并返回结果之后才能继续执行后续代码</p><h3 id="优缺点">2.1.1. 优缺点</h3><ul><li>优点:<ul><li>简单直观,代码易于理解和编写</li><li>易于调试,由于执行顺序明确,调试起来相对容易</li><li>对实时性要求较高的场景较好</li></ul></li><li>缺点:<ul><li>阻塞执行,如果一个操作需要很长时间来完成,那么整个程序会被阻塞,不能执行其他任务</li><li>资源浪费,在等待长时间操作完成时,CPU和其他资源可能会处于空闲状态 </li><li>级联失败问题,下游出错,上游也会出错</li><li>耦合度高,服务间直接调用</li><li>响应时长为几个服务处理时长的总和,性能和吞吐能力下降</li></ul></li></ul><h2 id="异步调用">2.2. 异步调用</h2><p>调用者发出调用后无需等待被调用方完成就可以继续执行其他任务</p><h3 id="优缺点-1">2.2.1. 优缺点</h3><ul><li>优点:<ul><li>提高效率,异步调用可以使得程序在等待某些耗时操作完成的同时执行其他任务,提高了整体的执行效率</li><li>资源利用率高,在等待耗时操作时,可以释放资源给其他任务使用,避免了资源浪费</li><li>更好的用户体验,在网络应用中,用户不必等待页面加载完成就能进行其他操作,提高了用户体验</li><li>需要处理耗时操作的场景较好</li><li>耦合度低,只与Broker耦合</li><li>高并发的请求由Broker承受,流量削峰,不会打到具体的服务</li></ul></li><li>缺点:<ul><li>复杂性增加,异步编程通常比同步编程更复杂,因为它涉及更多的控制结构和错误处理逻辑</li><li>调试困难,由于执行路径不是线性的,调试起来相对困难</li></ul></li></ul><h2 id="例子">2.3. 例子</h2><p>打电话预约服务</p><ul><li>同步调用:<ul><li>预约餐桌</li><li>您稍等,我确认下是否可以预约</li><li>(五分钟后)您的预约已确认,请在指定时间到店</li><li>挂断</li></ul></li><li>异步调用:<ul><li>预约餐桌</li><li>好的,稍后我会短信通知您</li><li>挂断</li></ul></li></ul><h1 id="主流MQ中间件">3. 主流MQ中间件</h1><ul><li>RabbitMQ</li><li>ActiveMQ</li><li>Kafka</li><li>RocketMQ</li><li>等</li></ul><h2 id="对比">3.1. 对比</h2><p><img src="/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%B8%BB%E6%B5%81MQ%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%AF%B9%E6%AF%94.png" alt="主流MQ中间件对比"></p><h2 id="选择">3.2. 选择</h2><ul><li>选择MQ中间件时,需要根据业务场景和需求进行选择</li><li>业务场景:<ul><li>实时性要求高:RabbitMQ</li><li>消息可靠性要求高:ActiveMQ</li><li>消息量要求高:Kafka</li><li>消息低延迟要求高:RocketMQ</li></ul></li><li>需求:<ul><li>功能完善:RabbitMQ、ActiveMQ、Kafka、RocketMQ</li><li>性能好:RabbitMQ、Kafka、RocketMQ</li><li>成本低:RabbitMQ、ActiveMQ、Kafka、RocketMQ</li></ul></li><li>最终: 公司用什么，我们用什么</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;RabbitMQ是基于Erlang语言开发的开源消息通信中间件消息队列MQ的一种,支持AMQP协议(SpringBoot支持AMQP协议).&lt;br&gt;&lt;img src=&quot;/2025/09/09/RabbitMQ%E4%B9%8B%E9%9D%A2%E8%AF%95%E9%A2%98/RabbitMQ%E6%9E%B6%E6%9E%84.png&quot; alt=&quot;RabbitMQ架构&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="面试" scheme="http://example.com/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+    <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
+    
+    <category term="MQ" scheme="http://example.com/tags/MQ/"/>
+    
+    <category term="面试" scheme="http://example.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaWeb的Bug之SpringBoot</title>
