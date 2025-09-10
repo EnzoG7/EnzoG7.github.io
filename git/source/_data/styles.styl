@@ -1,0 +1,62 @@
+body {
+    background:url(/uploads/background.jpg);
+    background-repeat: no-repeat;   //图片无法铺满时，是否重复以及重复方式
+    background-attachment:fixed;    //图片是否跟随滚动
+    background-size: cover;         //覆盖
+    background-position:50% 50%;    //图片位置
+}
+
+
+//博客内容透明化
+//文章内容的透明度设置
+if (hexo-config('motion.transition.post_block')) {
+  .post-block {
+    background: rgba(255,255,255,0.9);
+    opacity: 0.9;
+    radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 40px;
+    -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+    -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+  }
+  .pagination, .comments {
+    opacity: 0;
+  }
+
+  +tablet() {
+    margin: 20px;
+    padding: 10px;
+  }
+
+  +mobile() {
+    margin: 15px;
+    padding: 15px;
+  }
+}
+
+
+//侧边框的透明度设置
+.sidebar {
+  opacity: 0.9;
+}
+
+//菜单栏的透明度设置
+.header-inner {
+  background: rgba(255,255,255,0.9);
+}
+
+//搜索框（local-search）的透明度设置
+.popup {
+  opacity: 0.9;
+}
+
+// 针对Code代码标签的美化
+code {
+  padding: 2px 4px;
+  word-wrap: break-word;
+  color: #c7254e;
+  background: #f9f2f4;
+  border-radius: 3px;
+  font-size: 18px;
+}

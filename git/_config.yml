@@ -8,7 +8,7 @@ subtitle: ''
 description: cogito ergo sum
 keywords:
 author: Enzo
-language: zh-Hans
+language: zh-CN
 timezone: ''
 
 # URL
@@ -28,7 +28,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: README.md
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -40,7 +40,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
@@ -97,6 +97,25 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
+plugins: hexo-generate-feed
+
+# RSS
+# hexo-generate-feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: false
+  
+# 插件 hexo-heading-index 自动生成标题序号
+heading_index:
+  enable: true
+  index_styles: "{1} {1} {1} {1} {1} {1}"
+  connector: "."
+  global_prefix: ""
+  global_suffix: ". "
+  start_level: 1
+  allow_html: false
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
