@@ -33,15 +33,15 @@
     <category term="微服务" scheme="http://example.com/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
-    
     <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
     
-    <category term="微服务" scheme="http://example.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
     
     <category term="MQ" scheme="http://example.com/tags/MQ/"/>
     
     <category term="Canal" scheme="http://example.com/tags/Canal/"/>
+    
+    <category term="微服务" scheme="http://example.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
   </entry>
   
@@ -69,13 +69,13 @@
     <category term="微服务" scheme="http://example.com/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
-    
     <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
     
-    <category term="网关" scheme="http://example.com/tags/%E7%BD%91%E5%85%B3/"/>
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
     
     <category term="微服务" scheme="http://example.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    <category term="网关" scheme="http://example.com/tags/%E7%BD%91%E5%85%B3/"/>
     
   </entry>
   
@@ -96,9 +96,9 @@
     <category term="微服务" scheme="http://example.com/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
-    
     <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
     
     <category term="微服务" scheme="http://example.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
@@ -123,9 +123,9 @@
     <category term="微服务" scheme="http://example.com/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
-    
     <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
     
     <category term="微服务" scheme="http://example.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
@@ -150,13 +150,13 @@
     <category term="面试" scheme="http://example.com/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
-    
     <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
     
-    <category term="微服务" scheme="http://example.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
     
     <category term="MQ" scheme="http://example.com/tags/MQ/"/>
+    
+    <category term="微服务" scheme="http://example.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     <category term="面试" scheme="http://example.com/tags/%E9%9D%A2%E8%AF%95/"/>
     
@@ -179,13 +179,13 @@
     <category term="Bug" scheme="http://example.com/categories/Bug/"/>
     
     
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
     
-    <category term="Bug" scheme="http://example.com/tags/Bug/"/>
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
     
     <category term="Web" scheme="http://example.com/tags/Web/"/>
     
-    <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
+    <category term="Bug" scheme="http://example.com/tags/Bug/"/>
     
   </entry>
   
@@ -252,11 +252,11 @@
     <category term="JavaWeb" scheme="http://example.com/categories/JavaWeb/"/>
     
     
+    <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
+    
     <category term="Java" scheme="http://example.com/tags/Java/"/>
     
     <category term="Web" scheme="http://example.com/tags/Web/"/>
-    
-    <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
     
   </entry>
   
@@ -282,11 +282,11 @@
     <category term="JavaWeb" scheme="http://example.com/categories/JavaWeb/"/>
     
     
+    <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
+    
     <category term="Java" scheme="http://example.com/tags/Java/"/>
     
     <category term="Web" scheme="http://example.com/tags/Web/"/>
-    
-    <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
     
   </entry>
   
@@ -405,11 +405,11 @@
     
     <category term="Java" scheme="http://example.com/tags/Java/"/>
     
-    <category term="Bug" scheme="http://example.com/tags/Bug/"/>
-    
     <category term="MyBatis" scheme="http://example.com/tags/MyBatis/"/>
     
     <category term="Web" scheme="http://example.com/tags/Web/"/>
+    
+    <category term="Bug" scheme="http://example.com/tags/Bug/"/>
     
   </entry>
   
