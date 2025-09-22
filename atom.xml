@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-09-19T12:32:24.729Z</updated>
+  <updated>2025-09-22T13:09:23.636Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>循环依赖问题</title>
+    <link href="http://example.com/2025/09/22/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98/"/>
+    <id>http://example.com/2025/09/22/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98/</id>
+    <published>2025-09-22T12:41:58.000Z</published>
+    <updated>2025-09-22T13:09:23.636Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Spring中,如果一个Bean尝试将自身引用注入到自身中或是多个微服务之间存在循环的引用,Spring会抛出<code>BeanCurrentlyInCreationException</code>异常,这被称为循环依赖问题.<br><img src="/2025/09/22/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96.png" alt="循环依赖问题"></p><span id="more"></span><h1 id="循环依赖问题">1. 循环依赖问题</h1><p>循环依赖问题通常发生在以下两种场景中:</p><ul><li><strong>单例Bean的构造器注入</strong>: 当两个或多个单例Bean通过构造器注入彼此时,就会发生循环依赖问题.</li><li><strong>原型Bean的循环依赖</strong>: 当两个或多个原型Bean之间存在循环依赖时,Spring会创建一个代理对象来解决循环依赖问题.</li></ul><p>在初始化A时需要注入B,要注入B就需要创建B实例再初始化B,而在初始B时需要注入A,此时A还没有创建完成就陷入死循环.</p><h2 id="解决方案">1.1. 解决方案</h2><h3 id="三级缓存-不存在AOP">1.1.1. 三级缓存 -&gt; 不存在AOP</h3><p>Spring通过三级缓存机制来解决单例Bean的循环依赖问题:</p><ul><li><strong>一级缓存</strong>: 存储完全初始化好的单例Bean.</li><li><strong>二级缓存</strong>: 存储正在初始化中的单例Bean.</li><li><strong>三级缓存</strong>: 存储原始的Bean定义,用于解决循环依赖问题.<br>创建A时,先生成原始A放入三级缓存,然后依赖B.没有B,所以再创建B,生成原始B放入二级缓存,然后依赖A,将三级缓存的A取到二级缓存,完成B的初始化,将B放入一级缓存.接着完成A的初始化,将A放入一级缓存.<br><img src="/2025/09/22/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98/%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98.png" alt="三级缓存"><br>虽然过程中原始服务是半成品服务,但是Java是引用传递,拿到了相应服务的引用(也就是内存空间的地址)就行,后续都创建好了,拿到的服务就是完整的.</li></ul><h3 id="设计层面拆分业务逻辑-存在AOP">1.1.2. 设计层面拆分业务逻辑 -&gt; 存在AOP</h3><ul><li>引入中间服务类,避免A和B互相依赖,例如将A中需要依赖B的逻辑提取出来,放到一个中间服务类中,然后A和B都依赖这个中间服务类.</li><li>B可能只是用A的简单方法,不去依赖A,而是直接调用A的Mapper.</li></ul><h3 id="Lazy注解">1.1.3. Lazy注解</h3><p>使用<code>@Lazy</code>注解来延迟Bean的初始化,直到真正需要使用该Bean时才进行初始化.这可以避免在应用启动时就创建所有的Bean,从而减少循环依赖问题的发生.</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;在Spring中,如果一个Bean尝试将自身引用注入到自身中或是多个微服务之间存在循环的引用,Spring会抛出&lt;code&gt;BeanCurrentlyInCreationException&lt;/code&gt;异常,这被称为循环依赖问题.&lt;br&gt;&lt;img src=&quot;/2025/09/22/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96.png&quot; alt=&quot;循环依赖问题&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="微服务" scheme="http://example.com/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="微服务" scheme="http://example.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    <category term="Redis" scheme="http://example.com/tags/Redis/"/>
+    
+    <category term="缓存" scheme="http://example.com/tags/%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="性能优化&#39;" scheme="http://example.com/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+    <category term="web" scheme="http://example.com/tags/web/"/>
+    
+    <category term="设计模式" scheme="http://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="三级缓存" scheme="http://example.com/tags/%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>缓存穿透、缓存击穿和缓存雪崩问题</title>
