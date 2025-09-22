@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="Enzo&#39;s Blog">
 <meta property="og:description" content="登录校验,指的是我们在服务器端接收到浏览器发送过来的请求之后,首先我们要对请求进行校验.先要校验一下用户登录了没有,如果用户已经登录了,就直接执行对应的业务操作就可以了;如果用户没有登录,此时就不允许他执行相关的业务操作,直接给前端响应一个错误的结果,最终跳转到登录页面,要求他登录成功之后,再来访问对应的数据.主要涉及两个技术,会话技术与统一拦截技术.本文介绍会话技术.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/cookie.png">
-<meta property="og:image" content="http://example.com/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/session.png">
-<meta property="og:image" content="http://example.com/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/token.png">
-<meta property="og:image" content="http://example.com/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/jwt%E7%BB%84%E6%88%90.png">
+<meta property="og:image" content="http://example.com/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/cookie.png">
+<meta property="og:image" content="http://example.com/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/session.png">
+<meta property="og:image" content="http://example.com/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/token.png">
+<meta property="og:image" content="http://example.com/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/jwt%E7%BB%84%E6%88%90.png">
 <meta property="article:published_time" content="2025-07-17T11:59:48.000Z">
 <meta property="article:modified_time" content="2025-07-17T13:17:29.214Z">
 <meta property="article:author" content="Enzo">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Web">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/cookie.png">
+<meta name="twitter:image" content="http://example.com/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/cookie.png">
 
 <link rel="canonical" href="http://example.com/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/">
 
@@ -224,7 +224,7 @@
 <span id="more"></span>
 <h1 id="会话技术">1. 会话技术</h1><p>用户打开浏览器就会 建立会话,直到断开连接前产生的多次请求和响应都是在这一次会话中.如果开了多个浏览器就是产生多个会话.</p>
 <h1 id="会话跟踪技术">2. 会话跟踪技术</h1><p>为了维护浏览器状态,需要使用会话跟踪技术维护浏览器的状态,以便在同一次会话的多次请求间共享数据.</p>
-<h2 id="Cookie">2.1. Cookie</h2><p>cookie是客户端会话跟踪技术,它是存储在客户端浏览器的,我们可以在浏览器第一次发起请求来请求服务器的时候,在服务器端设置一个cookie来存储当前登录用户的用户名及ID.然后服务器响应数据会自动的带上cookie并存储到浏览器本地,此后的每一次请求中,客户端都会把该cookie一同携带到服务端.<br><img src="/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/cookie.png" alt="cookie流程"></p>
+<h2 id="Cookie">2.1. Cookie</h2><p>cookie是客户端会话跟踪技术,它是存储在客户端浏览器的,我们可以在浏览器第一次发起请求来请求服务器的时候,在服务器端设置一个cookie来存储当前登录用户的用户名及ID.然后服务器响应数据会自动的带上cookie并存储到浏览器本地,此后的每一次请求中,客户端都会把该cookie一同携带到服务端.<br><img src="/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/cookie.png" alt="cookie流程"></p>
 <ul>
 <li>优点：HTTP协议中支持的技术(像Set-Cookie 响应头的解析以及 Cookie 请求头数据的携带,都是浏览器自动进行的,是无需我们手动操作的)</li>
 <li>缺点：<ul>
@@ -234,7 +234,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Session">2.2. Session</h2><p>session是服务器端会话跟踪技术,存储在服务器端的.而Session的底层其实就是基于Cookie 来实现.<br><img src="/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/session.png" alt="Session流程"></p>
+<h2 id="Session">2.2. Session</h2><p>session是服务器端会话跟踪技术,存储在服务器端的.而Session的底层其实就是基于Cookie 来实现.<br><img src="/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/session.png" alt="Session流程"></p>
 <ul>
 <li>优点：Session是存储在服务端的,安全</li>
 <li>缺点：<ul>
@@ -245,7 +245,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Token-Jwt令牌">2.3. Token(Jwt令牌)</h2><p>如果通过令牌技术来跟踪会话,我们就可以在浏览器发起请求.在请求登录接口的时候,如果登录成功,就可以生成一个令牌,令牌就是用户的合法身份凭证.接下来在响应数据的时候,就可以直接将令牌响应给前端.<br>接下来我们在前端程序当中接收到令牌之后,就需要将这个令牌存储起来.这个存储可以存储在 cookie 当中,也可以存储在其他的存储空间(比如：localStorage)当中.<br>接下来,在后续的每一次请求当中,都需要将令牌携带到服务端.携带到服务端之后,接下来我们就需要来校验令牌的有效性.如果令牌是有效的,就说明用户已经执行了登录操作,如果令牌是无效的,就说明用户之前并未执行登录操作.<br>此时,如果是在同一次会话的多次请求之间,我们想共享数据,我们就可以将共享的数据存储在令牌当中就可以了.<br><img src="/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/token.png" alt="Token流程"></p>
+<h2 id="Token-Jwt令牌">2.3. Token(Jwt令牌)</h2><p>如果通过令牌技术来跟踪会话,我们就可以在浏览器发起请求.在请求登录接口的时候,如果登录成功,就可以生成一个令牌,令牌就是用户的合法身份凭证.接下来在响应数据的时候,就可以直接将令牌响应给前端.<br>接下来我们在前端程序当中接收到令牌之后,就需要将这个令牌存储起来.这个存储可以存储在 cookie 当中,也可以存储在其他的存储空间(比如：localStorage)当中.<br>接下来,在后续的每一次请求当中,都需要将令牌携带到服务端.携带到服务端之后,接下来我们就需要来校验令牌的有效性.如果令牌是有效的,就说明用户已经执行了登录操作,如果令牌是无效的,就说明用户之前并未执行登录操作.<br>此时,如果是在同一次会话的多次请求之间,我们想共享数据,我们就可以将共享的数据存储在令牌当中就可以了.<br><img src="/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/token.png" alt="Token流程"></p>
 <ul>
 <li>优点：<ul>
 <li>支持PC端、移动端</li>
@@ -260,7 +260,7 @@
 <ul>
 <li>第一部分:Header(头), 记录令牌类型、签名算法等. 例如：{“alg”:”HS256”,”type”:”JWT”}</li>
 <li>第二部分:Payload(有效载荷),携带一些自定义信息、默认信息等. 例如：{“id”:”1”,”username”:”Tom”}</li>
-<li>第三部分:Signature(签名),防止Token被篡改、确保安全性.将header、payload,并加入指定秘钥,通过指定签名算法计算而来.<br><img src="/2025/07/17/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/jwt%E7%BB%84%E6%88%90.png" alt="Jwt组成"></li>
+<li>第三部分:Signature(签名),防止Token被篡改、确保安全性.将header、payload,并加入指定秘钥,通过指定签名算法计算而来.<br><img src="/Web%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C%E4%B9%8B%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/jwt%E7%BB%84%E6%88%90.png" alt="Jwt组成"></li>
 </ul>
 <h2 id="Jwt编码原理">3.2. Jwt编码原理</h2><ul>
 <li>对JSON格式的数据进行一次base64编码.</li>

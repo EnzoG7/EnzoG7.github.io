@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="Enzo&#39;s Blog">
 <meta property="og:description" content="MyBatis是一款优秀的持久层框架,用于简化JDBC的开发.本文及后续JavaWeb所创建的项目均为Maven+SpringBoot项目,用的是Aliyun的Maven仓库.主要记录MyBatis依赖的安装过程和入门操作.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2025/07/09/MyBatis%E7%9A%84%E5%85%A5%E9%97%A8/%E8%B0%83%E7%94%A8%E9%80%BB%E8%BE%91.png">
+<meta property="og:image" content="http://example.com/MyBatis%E7%9A%84%E5%85%A5%E9%97%A8/%E8%B0%83%E7%94%A8%E9%80%BB%E8%BE%91.png">
 <meta property="article:published_time" content="2025-07-09T03:23:20.000Z">
 <meta property="article:modified_time" content="2025-07-09T09:10:12.387Z">
 <meta property="article:author" content="Enzo">
 <meta property="article:tag" content="Java">
-<meta property="article:tag" content="MyBatis">
 <meta property="article:tag" content="Web">
+<meta property="article:tag" content="MyBatis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2025/07/09/MyBatis%E7%9A%84%E5%85%A5%E9%97%A8/%E8%B0%83%E7%94%A8%E9%80%BB%E8%BE%91.png">
+<meta name="twitter:image" content="http://example.com/MyBatis%E7%9A%84%E5%85%A5%E9%97%A8/%E8%B0%83%E7%94%A8%E9%80%BB%E8%BE%91.png">
 
 <link rel="canonical" href="http://example.com/2025/07/09/MyBatis%E7%9A%84%E5%85%A5%E9%97%A8/">
 
@@ -232,7 +232,7 @@
 
 <h2 id="单元测试">2.2. 单元测试</h2><p>在src&#x2F;test&#x2F;java&#x2F;com&#x2F;example&#x2F;mybatisdemo&#x2F;MyBatisDemoApplicationTests.java中编写单元测试.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyBatisDemoApplicationTests</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">testSelectAll</span><span class="params">()</span> &#123;</span><br><span class="line">        List&lt;User&gt; userList = userMapper.selectAll();</span><br><span class="line">        <span class="keyword">for</span> (User user : userList) &#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">testInsertUser</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setUsername(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">        user.setPassword(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> userMapper.insertUser(user);</span><br><span class="line">        assertEquals(<span class="number">1</span>, result);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">testUpdateUser</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> userMapper.updateUser(<span class="string">&quot;test2&quot;</span>, <span class="string">&quot;1234567&quot;</span>, <span class="number">1</span>);</span><br><span class="line">        assertEquals(<span class="number">1</span>, result);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">testDeleteUser</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> userMapper.deleteUser(<span class="number">1</span>);</span><br><span class="line">        assertEquals(<span class="number">1</span>, result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="调用逻辑">2.3. 调用逻辑</h2><p>MyBatis的调用逻辑是通过Mapper接口与数据库进行交互的.在Spring Boot中,MyBatis会自动扫描Mapper接口并生成代理对象.<br><img src="/2025/07/09/MyBatis%E7%9A%84%E5%85%A5%E9%97%A8/%E8%B0%83%E7%94%A8%E9%80%BB%E8%BE%91.png" alt="调用逻辑"></p>
+<h2 id="调用逻辑">2.3. 调用逻辑</h2><p>MyBatis的调用逻辑是通过Mapper接口与数据库进行交互的.在Spring Boot中,MyBatis会自动扫描Mapper接口并生成代理对象.<br><img src="/MyBatis%E7%9A%84%E5%85%A5%E9%97%A8/%E8%B0%83%E7%94%A8%E9%80%BB%E8%BE%91.png" alt="调用逻辑"></p>
 
     </div>
 
@@ -262,8 +262,8 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Java/" rel="tag"># Java</a>
-              <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
               <a href="/tags/Web/" rel="tag"># Web</a>
+              <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
           </div>
 
         
